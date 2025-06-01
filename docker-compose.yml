@@ -1,0 +1,25 @@
+services:
+    client:
+        container_name: bean-client
+        build:
+            context: .
+            dockerfile: ./apps/client/Dockerfile
+        env_file:
+            - path: ./.env
+              required: false
+            - path: apps/client/.env.local
+              required: true
+        ports:
+            - 127.0.0.1:4173:4173
+    admin:
+        container_name: bean-admin
+        build:
+            context: .
+            dockerfile: ./apps/admin/Dockerfile
+        env_file:
+            - path: ./.env
+              required: false
+            - path: ./apps/admin/.env.local
+              required: true
+        ports:
+            - 127.0.0.1:3000:3000

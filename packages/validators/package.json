@@ -1,0 +1,48 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "@bean/validators",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        "./const": {
+            "types": "./dist/const/_index.d.ts",
+            "default": "./src/const/_index.ts"
+        },
+        "./env": {
+            "types": "./dist/env/_index.d.ts",
+            "default": "./src/env/_index.ts"
+        },
+        "./helpers": {
+            "types": "./dist/helpers/_index.d.ts",
+            "default": "./src/helpers/_index.ts"
+        },
+        "./model": {
+            "types": "./dist/model/_index.d.ts",
+            "default": "./src/model/_index.ts"
+        },
+        "./payload": {
+            "types": "./dist/payload/_index.d.ts",
+            "default": "./src/payload/_index.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "git clean -xdf .cache .turbo dist node_modules",
+        "dev": "tsc",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    },
+    "dependencies": {
+        "libphonenumber-js": "^1.11.19",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "typescript": "catalog:"
+    }
+}

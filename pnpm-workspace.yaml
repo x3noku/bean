@@ -1,0 +1,24 @@
+packages:
+    - apps/*
+    - packages/*
+    - tooling/*
+
+catalog:
+    "@biomejs/biome": ^1.9.4
+
+    "@t3-oss/env-core": ^0.13
+    "@t3-oss/env-nextjs": ^0.13
+
+    "@tabler/icons-react": ~3.31.0
+
+    typescript: ^5.6
+    zod: ^3.25
+
+catalogs:
+    react19:
+        react: ^19.1
+        react-dom: ^19.1
+        "@types/react": ^19.1
+        "@types/react-dom": ^19.1
+    node22:
+        "@types/node": ^22

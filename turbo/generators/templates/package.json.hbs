@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "@bean/{{ name }}",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "git clean -xdf .cache .turbo dist node_modules",
+        "dev": "tsc",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "typescript": "catalog:"
+    }
+}

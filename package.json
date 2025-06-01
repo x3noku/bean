@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "bean",
+    "private": true,
+    "engines": {
+        "node": ">=22",
+        "pnpm": "^10.2.1"
+    },
+    "packageManager": "pnpm@10.2.1+sha1.48adf39a4ab751eda7b73b99447d1f0b6d227e02",
+    "scripts": {
+        "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
+        "clean": "git clean -xdf node_modules",
+        "clean:workspaces": "turbo clean",
+        "dev": "turbo watch dev --continue",
+        "dev:next": "turbo watch dev -F @bean/nextjs...",
+        "build": "turbo build",
+        "check": "turbo run check --continue",
+        "check:fix": "turbo run check --continue -- --write",
+        "check:ws": "pnpm dlx sherif@latest",
+        "ci": "turbo run ci --continue",
+        "postinstall": "pnpm check:ws",
+        "typecheck": "turbo run typecheck --continue",
+        "ui-add": "turbo run ui-add",
+        "rename": "bash ./rename.sh"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "@turbo/gen": "^2.5.4",
+        "@types/jest": "^29.5.14",
+        "turbo": "^2.5.4",
+        "typescript": "catalog:"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@biomejs/biome",
+            "@nestjs/core",
+            "@openapitools/openapi-generator-cli",
+            "@parcel/watcher",
+            "core-js-pure",
+            "esbuild"
+        ]
+    }
+}

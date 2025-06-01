@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig.json",
+    "extends": "@bean/tsconfig/internal-package.json",
+    "include": ["*.ts", "src"],
+    "exclude": ["node_modules"]
+}
