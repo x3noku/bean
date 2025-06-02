@@ -5,7 +5,24 @@
     "private": true,
     "type": "module",
     "exports": {
-        ".": "./src/index.ts"
+        "./styles": "./src/styles/globals.scss",
+        "./postcss.config": "./postcss.config.js",
+        "./lib": {
+            "types": "./dist/src/lib/index.ts",
+            "default": "./src/lib/index.ts"
+        },
+        "./lib/*": {
+            "types": "./dist/src/lib/*.ts",
+            "default": "./src/lib/*.ts"
+        },
+        "./hooks/*": {
+            "types": "./dist/src/hooks/*.ts",
+            "default": "./src/hooks/*.ts"
+        },
+        "./*": {
+            "types": "./dist/src/components/*/index.d.ts",
+            "default": "./src/components/*/index.ts"
+        }
     },
     "scripts": {
         "build": "tsc",
@@ -15,12 +32,26 @@
         "check:fix": "biome check . --write",
         "ci": "biome ci",
         "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-        "ui-add": "pnpm dlx shadcn@latest add && biome format src --write"
+        "ui-add": "pnpm dlx shadcn@canary add && biome format src --write"
+    },
+    "dependencies": {
+        "@radix-ui/react-slot": "^1.2.3",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.511.0",
+        "tailwind-merge": "^3.3.0"
     },
     "devDependencies": {
         "@bean/biome-config": "workspace:*",
+        "@bean/tailwind-config": "workspace:^",
         "@bean/tsconfig": "workspace:*",
         "@biomejs/biome": "catalog:",
+        "@types/react": "catalog:react19",
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.4",
+        "react": "catalog:react19",
+        "sass": "^1.89.1",
+        "tailwindcss": "catalog:",
         "typescript": "catalog:"
     }
 }

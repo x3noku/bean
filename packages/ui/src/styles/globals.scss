@@ -1,0 +1,29 @@
+@use 'sizes';
+@use 'theme';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply min-w-0 border-border;
+    }
+
+    dialog:modal {
+        max-width: 100vw;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    html,
+    html[data-theme='light'] {
+        @include theme.light;
+    }
+
+    html[data-theme='dark'] {
+        @include theme.dark;
+    }
+}
