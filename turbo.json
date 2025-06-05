@@ -5,7 +5,7 @@
         "build": {
             "dependsOn": ["^build"],
             "inputs": ["$TURBO_DEFAULT$", ".env*"],
-            "outputs": ["dist/**"]
+            "outputs": [".cache/tsbuildinfo.json", "dist/**"]
         },
         "dev": {
             "cache": false,
@@ -22,7 +22,8 @@
             "dependsOn": ["^ci"]
         },
         "typecheck": {
-            "dependsOn": ["^typecheck"]
+            "dependsOn": ["^build"],
+            "outputs": [".cache/tsbuildinfo.json"]
         },
         "clean": {
             "cache": false
@@ -30,11 +31,11 @@
         "//#clean": {
             "cache": false
         },
-        "db:push": {
+        "db:studio": {
             "cache": false,
             "persistent": true
         },
-        "db:studio": {
+        "db:push": {
             "cache": false,
             "persistent": true
         },

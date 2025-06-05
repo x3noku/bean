@@ -21,8 +21,8 @@
         "ci": "turbo run ci --continue",
         "typecheck": "turbo run typecheck --continue",
         "postinstall": "pnpm check:ws",
-        "db:push": "turbo -F server db:push",
         "db:studio": "turbo -F server db:studio",
+        "db:push": "turbo -F server db:push",
         "db:generate": "turbo -F server db:generate",
         "db:migrate": "turbo -F server db:migrate",
         "rename": "bash ./rename.sh"

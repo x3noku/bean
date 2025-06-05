@@ -15,7 +15,6 @@
         /** Aliases */
         "baseUrl": "./",
         "paths": {
-            "@bean/ui/*": ["../../packages/ui/src/*"],
             "~/env": ["./env.ts"],
             "~/orpc": ["./orpc/index.ts"],
             "~/public/*": ["./public/*"],

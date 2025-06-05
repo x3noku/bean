@@ -13,8 +13,8 @@
         "check:fix": "biome check . --write",
         "ci": "biome ci",
         "typecheck": "tsc --noEmit",
-        "db:push": "drizzle-kit push",
         "db:studio": "drizzle-kit studio",
+        "db:push": "drizzle-kit push",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate",
         "with-env": "dotenv -e ./.env.local -e ../../.env -c --"
