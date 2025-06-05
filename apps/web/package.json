@@ -43,6 +43,7 @@
         "@bean/tsconfig": "workspace:*",
         "@biomejs/biome": "catalog:",
         "@tanstack/react-query-devtools": "^5.79.0",
+        "@total-typescript/ts-reset": "^0.6.1",
         "@types/node": "catalog:node22",
         "@types/react": "catalog:react19",
         "@types/react-dom": "catalog:react19",

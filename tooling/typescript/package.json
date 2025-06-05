@@ -3,5 +3,5 @@
     "name": "@bean/tsconfig",
     "version": "0.1.0",
     "private": true,
-    "files": ["*.jsonc"]
+    "files": ["*.json"]
 }
