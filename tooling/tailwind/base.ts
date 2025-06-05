@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-const config: Config = {
+const config = {
     content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
         // fontSize: {
@@ -113,6 +113,6 @@ const config: Config = {
             },
         },
     },
-};
+} satisfies Config;
 
 export default config;

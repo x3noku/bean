@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "@bean/web",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "clean": "git clean -xdf .cache .turbo .next node_modules",
+        "dev": "pnpm with-env next dev --turbopack --port=3001",
+        "build": "pnpm with-env next build",
+        "start": "pnpm with-env next start",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit",
+        "with-env": "dotenv -e ./.env.local -e ../../.env -c --"
+    },
+    "dependencies": {
+        "@bean/logger": "workspace:*",
+        "@bean/ui": "workspace:*",
+        "@bean/validators": "workspace:*",
+        "@orpc/client": "^1.2.0",
+        "@orpc/react-query": "^1.2.0",
+        "@orpc/server": "^1.2.0",
+        "@radix-ui/react-label": "^2.1.7",
+        "@radix-ui/react-slot": "^1.2.3",
+        "@t3-oss/env-nextjs": "catalog:",
+        "@tanstack/react-form": "^1.3.2",
+        "@tanstack/react-query": "^5.79.0",
+        "better-auth": "^1.2.8",
+        "dotenv-cli": "^8.0.0",
+        "jiti": "^2.4.2",
+        "next": "15.3.0",
+        "nuqs": "^2.4.3",
+        "react": "catalog:react19",
+        "react-dom": "catalog:react19",
+        "rwdot": "^0.0.5",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tailwind-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "@tanstack/react-query-devtools": "^5.79.0",
+        "@types/node": "catalog:node22",
+        "@types/react": "catalog:react19",
+        "@types/react-dom": "catalog:react19",
+        "tailwindcss": "catalog:",
+        "typescript": "catalog:"
+    }
+}

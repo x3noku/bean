@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig.json",
+    "extends": "@bean/tsconfig/base.json",
+    "compilerOptions": {
+        /** Base Options */
+        "module": "esnext",
+        "lib": ["ES2022", "dom", "dom.iterable"],
+        "jsx": "preserve",
+        /** Plugins */
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        /** Aliases */
+        "baseUrl": "./",
+        "paths": {
+            "@bean/ui/*": ["../../packages/ui/src/*"],
+            "~/env": ["./env.ts"],
+            "~/orpc": ["./orpc/index.ts"],
+            "~/public/*": ["./public/*"],
+            "~/*": ["./src/*"]
+        }
+    },
+    "include": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "./.next/types/**/*.ts",
+        "./next-env.d.ts",
+        ".next/types/**/*.ts"
+    ],
+    "exclude": ["public"],
+    "references": [
+        {
+            "path": "../server"
+        }
+    ]
+}

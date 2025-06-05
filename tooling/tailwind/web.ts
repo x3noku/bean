@@ -4,7 +4,7 @@ import plugin from 'tailwindcss/plugin';
 
 import base from './base';
 
-const config: Config = {
+const config = {
     content: base.content,
     presets: [base],
     darkMode: ['selector', '[data-theme="dark"]'],
@@ -55,6 +55,6 @@ const config: Config = {
             tw.addVariant('inert', '&:is([inert], [inert] *)');
         }),
     ],
-};
+} satisfies Config;
 
 export default config;

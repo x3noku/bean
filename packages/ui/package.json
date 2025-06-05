@@ -32,7 +32,7 @@
         "check:fix": "biome check . --write",
         "ci": "biome ci",
         "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-        "ui-add": "pnpm dlx shadcn@canary add && biome format src --write"
+        "ui-add": "pnpm dlx shadcn@canary add"
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.2.3",

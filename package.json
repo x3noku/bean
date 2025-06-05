@@ -11,34 +11,36 @@
         "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
         "clean": "git clean -xdf node_modules",
         "clean:workspaces": "turbo clean",
-        "dev": "turbo watch dev --continue",
-        "dev:next": "turbo watch dev -F @bean/nextjs...",
+        "dev": "turbo dev",
+        "dev:server": "turbo -F server dev",
+        "dev:web": "turbo -F web dev",
         "build": "turbo build",
         "check": "turbo run check --continue",
         "check:fix": "turbo run check --continue -- --write",
         "check:ws": "pnpm dlx sherif@latest",
         "ci": "turbo run ci --continue",
-        "postinstall": "pnpm check:ws",
         "typecheck": "turbo run typecheck --continue",
-        "ui-add": "turbo run ui-add",
+        "postinstall": "pnpm check:ws",
+        "db:push": "turbo -F server db:push",
+        "db:studio": "turbo -F server db:studio",
+        "db:generate": "turbo -F server db:generate",
+        "db:migrate": "turbo -F server db:migrate",
         "rename": "bash ./rename.sh"
     },
     "devDependencies": {
         "@bean/biome-config": "workspace:*",
         "@biomejs/biome": "catalog:",
         "@turbo/gen": "^2.5.4",
-        "@types/jest": "^29.5.14",
         "turbo": "^2.5.4",
         "typescript": "catalog:"
     },
     "pnpm": {
         "onlyBuiltDependencies": [
             "@biomejs/biome",
-            "@nestjs/core",
-            "@openapitools/openapi-generator-cli",
             "@parcel/watcher",
             "core-js-pure",
-            "esbuild"
+            "esbuild",
+            "sharp"
         ]
     }
 }

@@ -3,7 +3,7 @@
     "extends": "@bean/tsconfig/internal-package.json",
     "compilerOptions": {
         "jsx": "react-jsx",
-        "baseUrl": ".",
+        "baseUrl": "./",
         "paths": {
             "@bean/ui/*": ["./src/*"]
         }
