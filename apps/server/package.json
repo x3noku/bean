@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "@bean/server",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "clean": "git clean -xdf .cache .turbo dist node_modules",
+        "dev": "pnpm with-env tsx watch src/index.ts",
+        "build": "NODE_ENV=production pnpm with-env tsup",
+        "start": "NODE_ENV=production pnpm with-env node dist/src/index.js",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit",
+        "db:push": "drizzle-kit push",
+        "db:studio": "drizzle-kit studio",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "with-env": "dotenv -e ./.env.local -e ../../.env -c --"
+    },
+    "dependencies": {
+        "@better-auth/expo": "^1.2.8",
+        "@hono/node-server": "^1.14.0",
+        "@orpc/client": "^1.2.0",
+        "@orpc/server": "^1.2.0",
+        "@t3-oss/env-core": "catalog:",
+        "better-auth": "^1.2.8",
+        "dotenv-cli": "^8.0.0",
+        "drizzle-orm": "^0.38.4",
+        "hono": "^4.7.6",
+        "jiti": "^2.4.2",
+        "pg": "^8.14.1",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "@types/node": "catalog:node22",
+        "@types/pg": "^8.11.11",
+        "drizzle-kit": "^0.30.5",
+        "tsup": "^8.5.0",
+        "tsx": "^4.19.2",
+        "typescript": "catalog:"
+    }
+}

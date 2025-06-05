@@ -1,22 +1,22 @@
 {
-    "$schema": "https://turbo.build/schema.json",
+    "$schema": "https://turborepo.com/schema.json",
     "ui": "tui",
     "tasks": {
         "build": {
             "dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+            "inputs": ["$TURBO_DEFAULT$", ".env*"],
             "outputs": ["dist/**"]
         },
         "dev": {
-			"dependsOn": ["^dev"],
+            "dependsOn": ["^dev"],
             "cache": false,
             "persistent": true
         },
         "check": {
-			"dependsOn": ["^check"]
+            "dependsOn": ["^check"]
         },
         "check:fix": {
-			"dependsOn": ["^check:fix"],
+            "dependsOn": ["^check:fix"],
             "cache": false
         },
         "ci": {
@@ -46,10 +46,6 @@
         "db:generate": {
             "cache": false,
             "persistent": true
-        },
-        "ui-add": {
-            "cache": false,
-            "interactive": true
         }
     }
 }
