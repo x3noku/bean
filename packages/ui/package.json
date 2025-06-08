@@ -5,7 +5,7 @@
     "private": true,
     "type": "module",
     "exports": {
-        "./styles": "./src/styles/globals.scss",
+        "./styles": "./src/styles/globals.css",
         "./postcss.config": "./postcss.config.js",
         "./lib": {
             "types": "./dist/src/lib/index.ts",
@@ -49,8 +49,8 @@
         "@types/react": "catalog:react19",
         "autoprefixer": "^10.4.21",
         "postcss": "^8.5.4",
+        "postcss-import": "^16.1.0",
         "react": "catalog:react19",
-        "sass": "^1.89.1",
         "tailwindcss": "catalog:",
         "typescript": "catalog:"
     }
