@@ -3,7 +3,7 @@ import { fontFamily } from 'tailwindcss/defaultTheme';
 
 import web from '@bean/tailwind-config/web';
 
-const config: Config = {
+const config = {
     content: [...web.content, '../../packages/ui/src/**/*.{ts,tsx}'],
     presets: [web],
     theme: {
@@ -14,6 +14,6 @@ const config: Config = {
             },
         },
     },
-};
+} satisfies Config;
 
 export default config;
