@@ -42,6 +42,9 @@
             "core-js-pure",
             "esbuild",
             "sharp"
-        ]
+        ],
+        "patchedDependencies": {
+            "better-auth": "patches/better-auth.patch"
+        }
     }
 }

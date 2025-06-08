@@ -9,9 +9,43 @@ catalogs:
     '@biomejs/biome':
       specifier: ^1.9.4
       version: 1.9.4
+    '@t3-oss/env-core':
+      specifier: ^0.13
+      version: 0.13.6
+    '@t3-oss/env-nextjs':
+      specifier: ^0.13
+      version: 0.13.6
+    tailwindcss:
+      specifier: ^3.4.17
+      version: 3.4.17
     typescript:
       specifier: ~5.8.3
       version: 5.8.3
+    zod:
+      specifier: ^3.25
+      version: 3.25.46
+  node22:
+    '@types/node':
+      specifier: ^22
+      version: 22.15.29
+  react19:
+    '@types/react':
+      specifier: ~19.0
+      version: 19.0.14
+    '@types/react-dom':
+      specifier: ~19.0
+      version: 19.0.6
+    react:
+      specifier: ~19.0
+      version: 19.0.0
+    react-dom:
+      specifier: ~19.0
+      version: 19.0.0
+
+patchedDependencies:
+  better-auth:
+    hash: 1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61
+    path: patches/better-auth.patch
 
 importers:
 
@@ -37,7 +71,7 @@ importers:
     dependencies:
       '@better-auth/expo':
         specifier: ^1.2.8
-        version: 1.2.8(better-auth@1.2.8)
+        version: 1.2.8(better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61))
       '@hono/node-server':
         specifier: ^1.14.0
         version: 1.14.3(hono@4.7.11)
@@ -52,7 +86,7 @@ importers:
         version: 0.13.6(typescript@5.8.3)(zod@3.25.46)
       better-auth:
         specifier: ^1.2.8
-        version: 1.2.8
+        version: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       drizzle-orm:
         specifier: ^0.38.4
         version: 0.38.4(@types/pg@8.15.4)(@types/react@19.1.6)(kysely@0.28.2)(pg@8.16.0)(react@19.1.0)
@@ -140,7 +174,7 @@ importers:
         version: 5.80.6(react@19.0.0)
       better-auth:
         specifier: ^1.2.8
-        version: 1.2.8
+        version: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       jiti:
         specifier: ^2.4.2
         version: 2.4.2
@@ -3360,10 +3394,10 @@ snapshots:
       core-js-pure: 3.40.0
       regenerator-runtime: 0.14.1
 
-  '@better-auth/expo@1.2.8(better-auth@1.2.8)':
+  '@better-auth/expo@1.2.8(better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61))':
     dependencies:
       '@better-fetch/fetch': 1.1.18
-      better-auth: 1.2.8
+      better-auth: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       better-call: 1.0.9
       zod: 3.25.46
 
@@ -4404,7 +4438,7 @@ snapshots:
 
   basic-ftp@5.0.5: {}
 
-  better-auth@1.2.8:
+  better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61):
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18
