@@ -4,9 +4,11 @@ import z from 'zod/v4';
 
 export const env = createEnv({
     server: {
+        /* Docker */
+        DOCKER: envBooleanOptionalSchema,
+
         /* Node */
         NODE_ENV: envNodeEnvSchema,
-        DOCKER: envBooleanOptionalSchema,
 
         /* Database */
         DATABASE_URL: envUrlSchema,

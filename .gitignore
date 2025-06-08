@@ -9,25 +9,6 @@ v8-compile-cache-*
 
 # # testing
 # coverage
-#
-# # next.js
-# .next/
-# out/
-# next-env.d.ts
-#
-# # nitro
-# .nitro/
-# .output/
-#
-# # expo
-# .expo/
-# expo-env.d.ts
-# apps/expo/.gitignore
-# apps/expo/ios
-# apps/expo/android
-#
-# # production
-# build/
 
 # logs
 logs/

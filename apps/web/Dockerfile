@@ -113,6 +113,7 @@ COPY --from=pruner /app/out/full/ .
 COPY --from=dev-deps /app/ .
 COPY turbo.json turbo.json
 
+# Docker
 RUN echo "DOCKER=true" > .env
 
 # Node environment
@@ -122,6 +123,13 @@ RUN echo "NODE_ENV=$NODE_ENV" >> .env
 # API
 ARG VITE_API_BASE_URL
 RUN if [[ -v NEXT_PUBLIC_SERVER_URL ]]; then echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env; fi
+
+# Remote Cache
+ARG TURBO_TEAM
+ENV TURBO_TEAM=$"TURBO_TEAM"
+
+ARG TURBO_TOKEN
+ENV TURBO_TOKEN="$TURBO_TOKEN"
 
 RUN pnpm run build --filter=$APP_PKG_NAME...
 RUN rm -rf ./**/*/src

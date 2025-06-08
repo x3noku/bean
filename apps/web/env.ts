@@ -3,9 +3,11 @@ import { envBooleanOptionalSchema, envNodeEnvSchema, envUrlSchema } from '@bean/
 
 export const env = createEnv({
     shared: {
+        /* Docker */
+        DOCKER: envBooleanOptionalSchema,
+
         /* Node */
         NODE_ENV: envNodeEnvSchema,
-        DOCKER: envBooleanOptionalSchema,
     },
     server: {},
     client: {
@@ -13,9 +15,11 @@ export const env = createEnv({
         NEXT_PUBLIC_SERVER_URL: envUrlSchema,
     },
     experimental__runtimeEnv: {
+        /* Docker */
+        DOCKER: process.env.DOCKER,
+
         /* Node */
         NODE_ENV: process.env.NODE_ENV,
-        DOCKER: process.env.DOCKER,
 
         /* API */
         NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
