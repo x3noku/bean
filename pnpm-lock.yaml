@@ -9,38 +9,9 @@ catalogs:
     '@biomejs/biome':
       specifier: ^1.9.4
       version: 1.9.4
-    '@t3-oss/env-core':
-      specifier: ^0.13
-      version: 0.13.6
-    '@t3-oss/env-nextjs':
-      specifier: ^0.13
-      version: 0.13.6
-    tailwindcss:
-      specifier: ^3.4.17
-      version: 3.4.17
     typescript:
       specifier: ~5.8.3
       version: 5.8.3
-    zod:
-      specifier: ^3.25
-      version: 3.25.46
-  node22:
-    '@types/node':
-      specifier: ^22
-      version: 22.15.29
-  react19:
-    '@types/react':
-      specifier: ~19.0
-      version: 19.0.14
-    '@types/react-dom':
-      specifier: ~19.0
-      version: 19.0.6
-    react:
-      specifier: ~19.0
-      version: 19.0.0
-    react-dom:
-      specifier: ~19.0
-      version: 19.0.0
 
 importers:
 

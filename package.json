@@ -4,9 +4,9 @@
     "private": true,
     "engines": {
         "node": ">=22.11",
-        "pnpm": "^10.2.1"
+        "pnpm": "^10"
     },
-    "packageManager": "pnpm@10.2.1+sha1.48adf39a4ab751eda7b73b99447d1f0b6d227e02",
+    "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
     "scripts": {
         "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
         "clean": "git clean -xdf node_modules",
