@@ -22,7 +22,7 @@
             "dependsOn": ["^ci"]
         },
         "typecheck": {
-            "dependsOn": ["^build"],
+            "dependsOn": ["^typecheck"],
             "outputs": [".cache/tsbuildinfo.json"]
         },
         "clean": {

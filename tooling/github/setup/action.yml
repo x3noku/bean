@@ -18,5 +18,5 @@ runs:
 
         - shell: bash
           run: |
-            # cp ./apps/admin/.env.local.example ./apps/admin/.env.local
-            # cp ./apps/client/.env.local.example ./apps/client/.env.local
+            cp ./apps/server/.env.local.example ./apps/server/.env.local
+            cp ./apps/web/.env.local.example ./apps/web/.env.local
