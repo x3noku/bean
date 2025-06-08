@@ -1,6 +1,6 @@
 import { createEnv } from '@t3-oss/env-core';
 import { envBooleanOptionalSchema, envNodeEnvSchema, envUrlSchema } from '@bean/validators/env';
-import z from 'zod';
+import z from 'zod/v4';
 
 export const env = createEnv({
     server: {
@@ -22,7 +22,7 @@ export const env = createEnv({
                 : envUrlSchema.optional(),
 
         /* Cors */
-        CORS_ORIGIN: z.string().default(''),
+        CORS_ORIGIN: z.string().pipe(z.custom<'REFLECT' | (string & {})>(() => true)),
     },
     runtimeEnv: process.env,
     skipValidation: !!process.env.CI || process.env.npm_lifecycle_event === 'lint',

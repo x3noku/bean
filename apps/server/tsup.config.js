@@ -1,12 +1,12 @@
-import { fileURLToPath } from 'node:url';
-import createJiti from 'jiti';
+import { createJiti } from 'jiti';
 import { defineConfig } from 'tsup';
 
-// Import env files to validate at build time. Use jiti so we can load .ts files in here.
-/** @type {import('./env.ts')} */
-const { env } = createJiti(fileURLToPath(import.meta.url))('./env');
-
-console.log(env.NODE_ENV);
+/**
+ * Import env files to validate at build time. Use jiti so we can load .ts files in here.
+ *
+ * @type {import('./env.ts')}
+ */
+await createJiti(import.meta.url).import('./env');
 
 export default defineConfig({
     entry: ['src/**/*'],
