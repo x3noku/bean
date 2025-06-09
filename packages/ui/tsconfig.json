@@ -8,5 +8,5 @@
             "@bean/ui/*": ["./src/*"]
         }
     },
-    "include": ["*.ts", "src"]
+    "include": ["src", "*.ts"]
 }

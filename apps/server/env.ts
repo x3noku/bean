@@ -1,27 +1,26 @@
 import { createEnv } from '@t3-oss/env-core';
-import { envBooleanOptionalSchema, envNodeEnvSchema, envUrlSchema } from '@bean/validators/env';
 import z from 'zod/v4';
 
 export const env = createEnv({
     server: {
         /* Docker */
-        DOCKER: envBooleanOptionalSchema,
+        DOCKER: z.stringbool().optional(),
 
         /* Node */
-        NODE_ENV: envNodeEnvSchema,
+        NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 
         /* Database */
-        DATABASE_URL: envUrlSchema,
+        DATABASE_URL: z.url(),
 
         /* Auth */
         BETTER_AUTH_SECRET:
-            process.env.NODE_ENV === envNodeEnvSchema._def.innerType.enum.production
+            process.env.NODE_ENV === 'production'
                 ? z.string()
                 : z.string().optional(),
         BETTER_AUTH_URL:
-            process.env.NODE_ENV === envNodeEnvSchema._def.innerType.enum.production
-                ? envUrlSchema
-                : envUrlSchema.optional(),
+            process.env.NODE_ENV === 'production'
+                ? z.url()
+                : z.url().optional(),
 
         /* Cors */
         CORS_ORIGIN: z.string().pipe(z.custom<'REFLECT' | (string & {})>(() => true)),

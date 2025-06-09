@@ -9,10 +9,6 @@
             "types": "./dist/const/_index.d.ts",
             "default": "./src/const/_index.ts"
         },
-        "./env": {
-            "types": "./dist/env/_index.d.ts",
-            "default": "./src/env/_index.ts"
-        },
         "./helpers": {
             "types": "./dist/helpers/_index.d.ts",
             "default": "./src/helpers/_index.ts"
@@ -27,9 +23,9 @@
         }
     },
     "scripts": {
-        "build": "tsc",
         "clean": "git clean -xdf .cache .turbo dist node_modules",
         "dev": "tsc",
+        "build": "tsc",
         "check": "biome check .",
         "check:fix": "biome check . --write",
         "ci": "biome ci",

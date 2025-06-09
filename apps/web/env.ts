@@ -1,18 +1,18 @@
 import { createEnv } from '@t3-oss/env-nextjs';
-import { envBooleanOptionalSchema, envNodeEnvSchema, envUrlSchema } from '@bean/validators/env';
+import { z } from 'zod/v4';
 
 export const env = createEnv({
     shared: {
         /* Docker */
-        DOCKER: envBooleanOptionalSchema,
+        DOCKER: z.stringbool().optional(),
 
         /* Node */
-        NODE_ENV: envNodeEnvSchema,
+        NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
     },
     server: {},
     client: {
         /* API */
-        NEXT_PUBLIC_SERVER_URL: envUrlSchema,
+        NEXT_PUBLIC_SERVER_URL: z.url(),
     },
     experimental__runtimeEnv: {
         /* Docker */
