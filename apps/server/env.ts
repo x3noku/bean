@@ -1,18 +1,16 @@
 import { createEnv } from '@t3-oss/env-core';
 import z from 'zod/v4';
+import { dbEnv } from '@bean/db/env';
 import { coolify } from "@t3-oss/env-core/presets-zod";
 
 export const env = createEnv({
-    extends: [coolify()],
+    extends: [dbEnv, coolify()],
     server: {
         /* Docker */
         DOCKER: z.stringbool().optional(),
 
         /* Node */
         NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-
-        /* Database */
-        DATABASE_URL: z.url(),
 
         /* Auth */
         BETTER_AUTH_SECRET:

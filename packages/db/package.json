@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schemastore.org/package.json",
+    "name": "@bean/db",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/src/index.d.ts",
+            "default": "./src/index.ts"
+        },
+        "./client": {
+            "types": "./dist/src/client.d.ts",
+            "default": "./src/client.ts"
+        },
+        "./schema": {
+            "types": "./dist/src/schema/_index.d.ts",
+            "default": "./src/schema/_index.ts"
+        },
+        "./env": {
+            "types": "./dist/env.d.ts",
+            "default": "./env.ts"
+        }
+    },
+    "scripts": {
+        "clean": "git clean -xdf .cache .turbo dist node_modules",
+        "dev": "tsc",
+        "build": "tsc",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+        "studio": "pnpm with-env drizzle-kit studio",
+        "push": "pnpm with-env drizzle-kit push",
+        "generate": "pnpm with-env drizzle-kit generate",
+        "migrate": "pnpm with-env drizzle-kit migrate",
+        "with-env": "dotenv -e ../../.env -c --"
+    },
+    "dependencies": {
+        "@t3-oss/env-core": "catalog:",
+        "drizzle-orm": "^0.44.1",
+        "drizzle-zod": "^0.8.2",
+        "postgres": "^3.4.7",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "drizzle-kit": "^0.30.6",
+        "typescript": "catalog:"
+    }
+}

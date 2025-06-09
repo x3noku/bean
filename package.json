@@ -22,10 +22,10 @@
         "ci": "turbo run ci --continue",
         "typecheck": "turbo run typecheck --continue",
         "postinstall": "pnpm check:ws",
-        "db:studio": "turbo -F @bean/server db:studio",
-        "db:push": "turbo -F @bean/server db:push",
-        "db:generate": "turbo -F @bean/server db:generate",
-        "db:migrate": "turbo -F @bean/server db:migrate",
+        "db:studio": "turbo -F @bean/sb studio",
+        "db:push": "turbo -F @bean/db push",
+        "db:generate": "turbo -F @bean/db generate",
+        "db:migrate": "turbo -F @bean/db migrate",
         "rename": "bash ./rename.sh"
     },
     "devDependencies": {
@@ -34,17 +34,5 @@
         "@turbo/gen": "^2.5.4",
         "turbo": "^2.5.4",
         "typescript": "catalog:"
-    },
-    "pnpm": {
-        "onlyBuiltDependencies": [
-            "@biomejs/biome",
-            "@parcel/watcher",
-            "core-js-pure",
-            "esbuild",
-            "sharp"
-        ],
-        "patchedDependencies": {
-            "better-auth": "patches/better-auth.patch"
-        }
     }
 }

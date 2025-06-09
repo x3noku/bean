@@ -1,7 +1,7 @@
+import { db } from '@bean/db/client';
+import { todo } from '@bean/db/schema';
 import { eq } from 'drizzle-orm';
 import z from 'zod/v4';
-import { db } from '../db';
-import { todo } from '../db/schema/todo';
 import { publicProcedure } from '../lib/orpc';
 
 export const todoRouter = {
