@@ -1,7 +1,9 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod/v4';
+import { coolify } from "@t3-oss/env-core/presets-zod";
 
 export const env = createEnv({
+    extends: [coolify()],
     shared: {
         /* Docker */
         DOCKER: z.stringbool().optional(),
