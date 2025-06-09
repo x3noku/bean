@@ -6,19 +6,19 @@
     "type": "module",
     "exports": {
         "./const": {
-            "types": "./dist/const/_index.d.ts",
+            "types": "./dist/src/const/_index.d.ts",
             "default": "./src/const/_index.ts"
         },
         "./helpers": {
-            "types": "./dist/helpers/_index.d.ts",
+            "types": "./dist/src/helpers/_index.d.ts",
             "default": "./src/helpers/_index.ts"
         },
         "./model": {
-            "types": "./dist/model/_index.d.ts",
+            "types": "./dist/src/model/_index.d.ts",
             "default": "./src/model/_index.ts"
         },
         "./payload": {
-            "types": "./dist/payload/_index.d.ts",
+            "types": "./dist/src/payload/_index.d.ts",
             "default": "./src/payload/_index.ts"
         }
     },

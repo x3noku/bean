@@ -7,6 +7,12 @@
         "declarationMap": true,
         "emitDeclarationOnly": true,
         "noEmit": false,
+
+        /**
+         * Set rootDir to root of the package to persist file structure
+         * regardless of whether there are included files in the root
+         */
+        "rootDir": "${configDir}",
         "outDir": "${configDir}/dist"
     }
 }
