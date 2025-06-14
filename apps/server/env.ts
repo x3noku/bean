@@ -23,7 +23,7 @@ export const env = createEnv({
                 : z.url().optional(),
 
         /* Cors */
-        CORS_ORIGIN: z.string().pipe(z.custom<'REFLECT' | (string & {})>(() => true)),
+        CORS_ORIGIN: z.string(),
     },
     runtimeEnv: process.env,
     skipValidation: !!process.env.CI || process.env.npm_lifecycle_event === 'lint',

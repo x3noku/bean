@@ -7,6 +7,10 @@
             "outputs": ["dist/**"]
         },
         "dev": {
+            "with": ["tunnel"],
+            "persistent": true
+        },
+        "tunnel": {
             "persistent": true
         }
     }
