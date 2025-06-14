@@ -30,10 +30,10 @@
         "check:fix": "biome check . --write",
         "ci": "biome ci",
         "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-        "studio": "pnpm with-env drizzle-kit studio",
-        "push": "pnpm with-env drizzle-kit push",
-        "generate": "pnpm with-env drizzle-kit generate",
-        "migrate": "pnpm with-env drizzle-kit migrate",
+        "db:studio": "pnpm with-env drizzle-kit studio",
+        "db:push": "pnpm with-env drizzle-kit push",
+        "db:generate": "pnpm with-env drizzle-kit generate",
+        "db:migrate": "pnpm with-env drizzle-kit migrate",
         "with-env": "dotenv -e ../../.env -c --"
     },
     "dependencies": {
