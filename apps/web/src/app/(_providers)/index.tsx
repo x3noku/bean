@@ -1,5 +1,7 @@
-import { NuqsProvider } from './NuqsProvider';
-import { ORPCProvider } from './ORPCProvider';
+'use client';
+
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { ORPCProvider } from '~/orpc/provider';
 import { RwdotProvider } from './RwdotProvider';
 import { ToastProvider } from './ToastProvider';
 
@@ -7,9 +9,9 @@ const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
     return (
         <ToastProvider>
             <RwdotProvider>
-                <NuqsProvider>
+                <NuqsAdapter>
                     <ORPCProvider>{children}</ORPCProvider>
-                </NuqsProvider>
+                </NuqsAdapter>
             </RwdotProvider>
         </ToastProvider>
     );

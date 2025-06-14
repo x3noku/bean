@@ -12,6 +12,8 @@ const config = {
     output: env.DOCKER ? 'standalone' : undefined,
     reactStrictMode: true,
 
+    devIndicators: env.NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED && {},
+
     /** Enables hot reloading for local packages without a build step */
     transpilePackages: ['@bean/logger', '@bean/ui', '@bean/validators'],
 

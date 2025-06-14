@@ -1,6 +1,8 @@
 ARG APP_DIRNAME="web"
 ARG APP_PKG_NAME="@bean/web"
 
+
+
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 ##                                                      Node                                                      ##
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
@@ -100,18 +102,20 @@ RUN pnpm install --prod --frozen-lockfile
 
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-##                                                     Builder                                                    ##
+##                                                       Env                                                      ##
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
 
 
-FROM base AS builder
-ARG APP_PKG_NAME
+FROM base AS env
 WORKDIR /app
 
-COPY --from=pruner /app/out/full/ .
-COPY --from=dev-deps /app/ .
-COPY turbo.json turbo.json
+# Remote Cache
+ARG TURBO_TEAM
+ENV TURBO_TEAM="$TURBO_TEAM"
+
+ARG TURBO_TOKEN
+ENV TURBO_TOKEN="$TURBO_TOKEN"
 
 # Docker
 RUN echo "DOCKER=true" > .env
@@ -124,12 +128,29 @@ RUN echo "NODE_ENV=$NODE_ENV" >> .env
 ARG VITE_API_BASE_URL
 RUN if [[ -v NEXT_PUBLIC_SERVER_URL ]]; then echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env; fi
 
-# Remote Cache
-ARG TURBO_TEAM
-ENV TURBO_TEAM=$"TURBO_TEAM"
+# Next Devtools (optional)
+ARG NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED
+RUN if [[ -v NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED ]]; then echo "NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED=$NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED" >> .env; fi
 
-ARG TURBO_TOKEN
-ENV TURBO_TOKEN="$TURBO_TOKEN"
+# TanStack Query Devtools (optional)
+ARG NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED
+RUN if [[ -v NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED ]]; then echo "NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED=$NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED" >> .env; fi
+
+
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+##                                                     Builder                                                    ##
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+
+
+FROM env AS builder
+ARG APP_PKG_NAME
+WORKDIR /app
+
+COPY --from=pruner /app/out/full/ .
+COPY --from=dev-deps /app/ .
+COPY turbo.json turbo.json
 
 RUN pnpm run build --filter=$APP_PKG_NAME...
 RUN rm -rf ./**/*/src
