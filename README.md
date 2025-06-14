@@ -62,6 +62,8 @@ apps
   └─ web
       └─ Web application (Next.js)
 packages
+  ├─ db
+  │   └─ Typesafe db schema using Drizzle & Postgres
   ├─ logger
   │   └─ Simple logger utility using consola
   ├─ ui
