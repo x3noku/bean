@@ -34,7 +34,7 @@
         "db:push": "pnpm with-env drizzle-kit push",
         "db:generate": "pnpm with-env drizzle-kit generate",
         "db:migrate": "pnpm with-env drizzle-kit migrate",
-        "with-env": "dotenv -e ../../.env -c --"
+        "with-env": "dotenvx run -f ../../.env --"
     },
     "dependencies": {
         "@t3-oss/env-core": "catalog:",
@@ -47,6 +47,7 @@
         "@bean/biome-config": "workspace:*",
         "@bean/tsconfig": "workspace:*",
         "@biomejs/biome": "catalog:",
+        "@dotenvx/dotenvx": "catalog:",
         "drizzle-kit": "^0.30.6",
         "typescript": "catalog:"
     }
