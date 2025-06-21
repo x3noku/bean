@@ -26,7 +26,7 @@
 First, install the dependencies:
 
 - Node.js, version `22.11.0` or higher
-- PNPM, version `10.11.1`
+- PNPM, version `10.12.1`
 - Bore, for tunneling server (optional)
 
 ```bash
