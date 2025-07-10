@@ -4,7 +4,7 @@ import { isProduction } from 'std-env';
 export const logger = createConsola({
     level: isProduction ? LogLevels.info : LogLevels.verbose,
     formatOptions: {
-        columns: isProduction ? 80 : undefined,
+        columns: isProduction ? 120 : undefined,
         colors: true,
         compact: false,
         date: true,
