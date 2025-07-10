@@ -54,7 +54,7 @@ RUN pnpm add -g turbo@^2
 
 # Prune
 COPY . .
-RUN turbo prune --scope=$APP_PKG_NAME --docker
+RUN pnpm turbo prune --scope=$APP_PKG_NAME --docker
 
 
 
@@ -68,7 +68,8 @@ FROM pnpm AS base
 WORKDIR /app
 
 COPY .gitignore .gitignore
-COPY --from=pruner /app/out/json/ .
+COPY .env* .env
+COPY --from=pruner /app/out/json .
 
 
 
@@ -115,7 +116,7 @@ ARG TURBO_TOKEN
 ENV TURBO_TOKEN="$TURBO_TOKEN"
 
 # Docker
-RUN echo "DOCKER=true" > .env
+RUN echo "DOCKER=true" >> .env
 
 # Node environment
 ARG NODE_ENV="production"
@@ -123,15 +124,18 @@ RUN echo "NODE_ENV=$NODE_ENV" >> .env
 
 # API
 ARG NEXT_PUBLIC_SERVER_URL
-RUN if [[ -v NEXT_PUBLIC_SERVER_URL ]]; then echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env; fi
+RUN if [[ -v NEXT_PUBLIC_SERVER_URL ]]; then \
+        echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env; fi
 
 # Next Devtools (optional)
 ARG NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED
-RUN if [[ -v NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED ]]; then echo "NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED=$NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED" >> .env; fi
+RUN if [[ -v NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED ]]; then \
+    echo "NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED=$NEXT_PUBLIC_NEXT_DEVTOOLS_ENABLED" >> .env; fi
 
 # TanStack Query Devtools (optional)
 ARG NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED
-RUN if [[ -v NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED ]]; then echo "NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED=$NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED" >> .env; fi
+RUN if [[ -v NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED ]]; then \
+    echo "NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED=$NEXT_PUBLIC_QUERY_DEVTOOLS_ENABLED" >> .env; fi
 
 
 
@@ -145,10 +149,12 @@ FROM env AS builder
 ARG APP_PKG_NAME
 WORKDIR /app
 
-COPY --from=pruner /app/out/full/ .
-COPY --from=dev-deps /app/ .
+COPY --from=pruner /app/out/full .
+COPY --from=dev-deps /app .
+COPY --from=env /app/.env .env
 
 RUN pnpm run build
+RUN find / -type f -name '.env*' -delete
 
 
 
@@ -168,7 +174,8 @@ USER nextjs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/app/api-reference/config/next-config-js/output#automatically-copying-traced-files
-COPY --from=builder --chown=nextjs:nodejs /app/apps/$APP_DIRNAME/.next/standalone ./
+COPY --from=pruner /app/out/json .
+COPY --from=builder --chown=nextjs:nodejs /app/apps/$APP_DIRNAME/.next/standalone .
 COPY --from=builder --chown=nextjs:nodejs /app/apps/$APP_DIRNAME/.next/static ./apps/$APP_DIRNAME/.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/apps/$APP_DIRNAME/public ./apps/$APP_DIRNAME/public
 

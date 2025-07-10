@@ -54,7 +54,7 @@ RUN pnpm add -g turbo@^2
 
 # Prune
 COPY . .
-RUN turbo prune --scope=$APP_PKG_NAME --docker
+RUN pnpm turbo prune --scope=$APP_PKG_NAME --docker
 
 
 
@@ -68,6 +68,7 @@ FROM pnpm AS base
 WORKDIR /app
 
 COPY .gitignore .gitignore
+COPY .env* .env
 COPY --from=pruner /app/out/json/ .
 
 
@@ -115,7 +116,7 @@ ARG TURBO_TOKEN
 ENV TURBO_TOKEN="$TURBO_TOKEN"
 
 # Docker
-RUN echo "DOCKER=true" > .env
+RUN echo "DOCKER=true" >> .env
 
 # Node environment
 ARG NODE_ENV="production"
@@ -123,18 +124,22 @@ RUN echo "NODE_ENV=$NODE_ENV" >> .env
 
 # Database
 ARG DATABASE_URL
-RUN echo "DATABASE_URL=$DATABASE_URL" >> .env
+RUN if [[ -v DATABASE_URL ]]; then \
+        echo "DATABASE_URL=$DATABASE_URL" >> .env; fi
 
 # Auth
 ARG BETTER_AUTH_SECRET
-RUN echo "BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET" >> .env
+RUN if [[ -v BETTER_AUTH_SECRET ]]; then \
+        echo "BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET" >> .env; fi
 
 ARG BETTER_AUTH_URL
-RUN echo "BETTER_AUTH_URL=$BETTER_AUTH_URL" >> .env
+RUN if [[ -v BETTER_AUTH_URL ]]; then \
+        echo "BETTER_AUTH_URL=$BETTER_AUTH_URL" >> .env; fi
 
 # Cors
 ARG CORS_ORIGIN
-RUN echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env
+RUN if [[ -v CORS_ORIGIN ]]; then \
+        echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env; fi
 
 
 
@@ -150,8 +155,10 @@ WORKDIR /app
 
 COPY --from=pruner /app/out/full/ .
 COPY --from=dev-deps /app/ .
+COPY --from=env /app/.env .env
 
 RUN pnpm run build
+RUN find / -type f -name '.env*' -delete
 
 
 
