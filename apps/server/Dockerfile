@@ -69,7 +69,7 @@ WORKDIR /app
 
 COPY .gitignore .gitignore
 COPY .env* .env
-COPY --from=pruner /app/out/json/ .
+COPY --from=pruner /app/out/json .
 
 
 
@@ -153,8 +153,8 @@ FROM env AS builder
 ARG APP_PKG_NAME
 WORKDIR /app
 
-COPY --from=pruner /app/out/full/ .
-COPY --from=dev-deps /app/ .
+COPY --from=pruner /app/out/full .
+COPY --from=dev-deps /app .
 COPY --from=env /app/.env .env
 
 RUN pnpm run build
