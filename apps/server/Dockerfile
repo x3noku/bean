@@ -182,7 +182,7 @@ COPY --from=production-deps --chown=hono:nodejs /app/node_modules ./node_modules
 COPY --from=production-deps --chown=hono:nodejs /app/apps/$APP_DIRNAME/node_modules ./apps/$APP_DIRNAME/node_modules
 COPY --from=builder --chown=hono:nodejs /app/apps/$APP_DIRNAME/dist/src ./apps/$APP_DIRNAME
 
-ARG PORT=3001
+ARG PORT=3000
 ENV PORT="$PORT"
 
 ENV APP_DIRNAME="$APP_DIRNAME"
