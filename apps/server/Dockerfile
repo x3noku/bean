@@ -116,10 +116,12 @@ ARG TURBO_TOKEN
 ENV TURBO_TOKEN="$TURBO_TOKEN"
 
 # Docker
-RUN echo "DOCKER=true" >> .env
+ENV DOCKER=true
+RUN echo "DOCKER=$DOCKER" >> .env
 
 # Node environment
 ARG NODE_ENV="production"
+ENV NODE_ENV="$NODE_ENV"
 RUN echo "NODE_ENV=$NODE_ENV" >> .env
 
 # Database
