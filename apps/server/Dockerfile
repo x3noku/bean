@@ -124,21 +124,21 @@ RUN echo "NODE_ENV=$NODE_ENV" >> .env
 
 # Database
 ARG DATABASE_URL
-RUN if [[ -v DATABASE_URL ]]; then \
+RUN if [[ -n "${DATABASE_URL+x}" ]]; then \
         echo "DATABASE_URL=$DATABASE_URL" >> .env; fi
 
 # Auth
 ARG BETTER_AUTH_SECRET
-RUN if [[ -v BETTER_AUTH_SECRET ]]; then \
+RUN if [[ -n "${BETTER_AUTH_SECRET+x}" ]]; then \
         echo "BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET" >> .env; fi
 
 ARG BETTER_AUTH_URL
-RUN if [[ -v BETTER_AUTH_URL ]]; then \
+RUN if [[ -n "${BETTER_AUTH_URL+x}" ]]; then \
         echo "BETTER_AUTH_URL=$BETTER_AUTH_URL" >> .env; fi
 
 # Cors
 ARG CORS_ORIGIN
-RUN if [[ -v CORS_ORIGIN ]]; then \
+RUN if [[ -n "${CORS_ORIGIN+x}" ]]; then \
         echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env; fi
 
 
@@ -168,7 +168,7 @@ RUN find / -type f -name '.env*' -delete
 
 
 
-FROM node AS runner
+FROM env AS runner
 ARG APP_DIRNAME
 WORKDIR /app
 
