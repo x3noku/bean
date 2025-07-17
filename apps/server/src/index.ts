@@ -40,7 +40,7 @@ app.use('/rpc/*', async (c, next) => {
 });
 
 app.get('/', c => {
-    return c.text('OK');
+    return c.text(`OK "${env.NODE_ENV}"`);
 });
 
 serve(

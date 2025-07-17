@@ -4,7 +4,7 @@ import { todoRouter } from './todo';
 
 export const appRouter = {
     healthCheck: publicProcedure.handler(() => {
-        return `OK ${env.NODE_ENV}`;
+        return `OK "${env.NODE_ENV}"`;
     }),
     privateData: protectedProcedure.handler(({ context }) => {
         return {
