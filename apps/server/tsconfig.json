@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemastore.org/tsconfig.json",
+    "extends": ["./.nitro/types/tsconfig.json", "@bean/tsconfig/base.json"],
+    "compilerOptions": {
+        /** Base Options */
+        "module": "esnext",
+        "lib": ["DOM"],
+        "jsx": "preserve",
+
+        /** Preact */
+        "jsxFactory": "h",
+        "jsxFragmentFactory": "Fragment",
+
+        /** Aliases */
+        "baseUrl": ".",
+        "paths": {
+            "~/env": ["./env.ts"],
+            "~/*": ["./src/*"]
+        },
+
+        /** Transpile using Bundler (not tsc) */
+        "composite": true,
+        "noEmit": false,
+        "emitDeclarationOnly": true,
+        "outDir": ".nitro/dist"
+    }
+}

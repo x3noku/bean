@@ -1,0 +1,90 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+    "files": {
+        "ignoreUnknown": false,
+        "includes": [
+            "**",
+            "!node_modules",
+            "!build",
+            "!dist",
+            "!routeTree.gen.ts",
+            "!.next",
+            "!.turbo",
+            "!.cache",
+            "!.zed",
+            "!.vscode",
+            "!.nuxt"
+        ]
+    },
+    "assist": {
+        "enabled": true,
+        "actions": {
+            "source": {
+                "organizeImports": "on",
+                "useSortedAttributes": "on",
+                "useSortedProperties": "on"
+            }
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "useExhaustiveDependencies": "warn",
+                "noUnusedVariables": "warn",
+                "noConstantCondition": "warn",
+                "noUnusedImports": "warn"
+            },
+            "style": {
+                "useImportType": "warn",
+                "useConsistentArrayType": {
+                    "level": "warn",
+                    "options": {
+                        "syntax": "shorthand"
+                    }
+                },
+                "noNonNullAssertion": "error",
+                "noEnum": "error"
+            },
+            "suspicious": {
+                "noUnknownAtRules": "off",
+                "noExplicitAny": "off"
+            }
+        }
+    },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf"
+    },
+    "javascript": {
+        "formatter": {
+            "quoteProperties": "preserve",
+            "jsxQuoteStyle": "single",
+            "trailingCommas": "all",
+            "arrowParentheses": "asNeeded",
+            "quoteStyle": "single",
+            "lineWidth": 120,
+            "semicolons": "always"
+        }
+    },
+    "json": {
+        "formatter": {
+            "trailingCommas": "none"
+        }
+    },
+    "css": {
+        "formatter": {
+            "enabled": true,
+            "quoteStyle": "single"
+        }
+    },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    }
+}

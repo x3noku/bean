@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schemastore.org/package.json",
+    "name": "@bean/server",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "clean": "git clean -xdf .cache .turbo .nitro .output node_modules",
+        "prepare": "pnpm with-env nitro prepare",
+        "dev": "pnpm with-env nitro dev",
+        "prebuild": "pnpm with-env nitro prepare && tsc",
+        "build": "pnpm with-env nitro build",
+        "start": "NODE_ENV=production pnpm with-env node .output/server/index.mjs",
+        "check": "biome check .",
+        "check:fix": "biome check . --write",
+        "ci": "biome ci",
+        "typecheck": "tsc --noEmit",
+        "with-env": "dotenvx run -f .env.local -f ../../.env --"
+    },
+    "dependencies": {
+        "@bean/db": "workspace:^",
+        "@better-auth/expo": "^1.2.8",
+        "@orpc/client": "^1.2.0",
+        "@orpc/server": "^1.2.0",
+        "@t3-oss/env-core": "catalog:",
+        "better-auth": "^1.2.8",
+        "jiti": "catalog:",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@bean/biome-config": "workspace:*",
+        "@bean/tsconfig": "workspace:*",
+        "@biomejs/biome": "catalog:",
+        "@dotenvx/dotenvx": "catalog:",
+        "@total-typescript/ts-reset": "^0.6.1",
+        "@types/node": "catalog:node22",
+        "h3": "^1.15.4",
+        "nitropack": "^2.12.4",
+        "typescript": "catalog:"
+    }
+}

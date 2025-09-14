@@ -1,0 +1,10 @@
+# build outputs
+.next/
+
+# deployment
+.vercel
+.netlify
+.wrangler
+
+# typescript
+next-env.d.ts

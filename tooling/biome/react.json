@@ -1,0 +1,40 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+    "linter": {
+        "rules": {
+            "a11y": {
+                "noStaticElementInteractions": "error",
+                "noLabelWithoutControl": {
+                    "level": "warn",
+                    "options": {
+                        "inputComponents": [
+                            "Input",
+                            "Checkbox",
+                            "Radio",
+                            "Switch"
+                        ]
+                    }
+                }
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "warn",
+                    "options": {
+                        "attributes": [
+                            "class",
+                            "className",
+                            "class:list",
+                            "classList",
+                            "ngClass"
+                        ],
+                        "functions": ["cn", "cx", "clsx", "cva", "tw", "tw.*"]
+                    },
+                    "fix": "safe"
+                }
+            },
+            "suspicious": {
+                "noArrayIndexKey": "off"
+            }
+        }
+    }
+}
